@@ -277,14 +277,14 @@ export function BookingFlow() {
                     <p className="mb-3 flex items-center gap-2 text-xs font-bold tracking-[0.2em] text-ink-soft uppercase">
                       <CalendarDays className="size-4 text-clay" /> Choose a day
                     </p>
-                    <div className="no-scrollbar -mx-1 flex gap-2.5 overflow-x-auto px-1 pb-2">
+                    <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-6">
                       {days.map((d) => {
                         const active = d.iso === date;
                         return (
                           <button
                             key={d.iso}
                             onClick={() => pickDay(d.iso)}
-                            className={`w-[4.4rem] shrink-0 rounded-2xl border-2 px-2 py-3.5 text-center transition-all duration-300 ${
+                            className={`min-w-0 rounded-2xl border-2 px-2 py-3.5 text-center transition-all duration-300 ${
                               active
                                 ? "border-forest bg-forest text-cream shadow-lg"
                                 : "border-ink/10 bg-cream hover:border-forest/40"
@@ -314,7 +314,7 @@ export function BookingFlow() {
                         Select a day above to see available times
                       </div>
                     ) : (
-                      <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-6">
+                      <div className="grid grid-cols-2 gap-2 sm:grid-cols-6 min-[360px]:grid-cols-3">
                         {TIME_SLOTS.map((t) => {
                           const taken = takenSet.has(t);
                           const active = t === time;
